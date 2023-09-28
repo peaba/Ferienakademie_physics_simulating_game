@@ -23,15 +23,15 @@ void checkPlayerAlive(flecs::iter iter, Position *position, KillBar *killBar) {
     // TODO multiplayer
     // TODO rename and/or combine with checkPlayerIsHit
     float distance = position[0].x - killBar->x;
-    if (distance < RUMBLE_ZONE) {
-        auto input_entity = iter.entity(0).get<InputEntity>();
-        input_entity->rumble(65535, 1000);
-    }
-    if (distance < 0) {
-        iter.world().get_mut<AppInfo>()->playerAlive = false;
-        auto input_entity = iter.entity(0).get<InputEntity>();
-        input_entity->rumble(65535, 3000);
-    }
+//    if (distance < RUMBLE_ZONE) {
+//        auto input_entity = iter.entity(0).get<InputEntity>();
+//        input_entity->rumble(65535, 1000);
+//    }
+//    if (distance < 0) {
+//        iter.world().get_mut<AppInfo>()->playerAlive = false;
+//        auto input_entity = iter.entity(0).get<InputEntity>();
+//        input_entity->rumble(65535, 3000);
+//    }
 }
 
 // TODO: remove this if not needed

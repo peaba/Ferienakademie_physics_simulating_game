@@ -1,12 +1,12 @@
 #include "input.h"
 
 #include "../utils/kinect_variables.h"
-#include <SDL2/SDL.h>
+//#include <SDL2/SDL.h>
 #include <cmath>
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <thread>
+//#include <thread>
 
 #include "kinect_handler.h"
 
@@ -266,35 +266,35 @@ InputEntity::InputType InputEntity::getInputType() const {
     return current_input_type;
 }
 
-void rumbleThread(SDL_GameController *controller, int strength, int duration) {
-    // Set rumble intensity for both motors (left and right)
-    SDL_GameControllerRumble(controller, strength, strength,
-                             duration); // Values range from 0 to 65535
-
-    // Sleep for the specified duration
-    std::this_thread::sleep_for(std::chrono::milliseconds(duration));
-
-    // Stop the rumble effect
-    SDL_GameControllerRumble(controller, 0, 0, 0);
-}
-
-void InputEntity::rumble(int strength, int duration) const {
-    SDL_GameController *controller = SDL_GameControllerOpen(getGamepadId());
-
-    if (!controller) {
-        // std::cerr << "No game controller found!" << std::endl;
-        SDL_Quit();
-        return;
-    }
-
-    // Create a thread to run the rumble effect
-    std::thread rumbleThreadObj(rumbleThread, controller, strength, duration);
-
-    // Detach the thread to allow it to run independently
-    rumbleThreadObj.detach();
-
-    // Continue with other tasks or return immediately without blocking
-}
+//void rumbleThread(SDL_GameController *controller, int strength, int duration) {
+//    // Set rumble intensity for both motors (left and right)
+//    SDL_GameControllerRumble(controller, strength, strength,
+//                             duration); // Values range from 0 to 65535
+//
+//    // Sleep for the specified duration
+//    std::this_thread::sleep_for(std::chrono::milliseconds(duration));
+//
+//    // Stop the rumble effect
+//    SDL_GameControllerRumble(controller, 0, 0, 0);
+//}
+//
+//void InputEntity::rumble(int strength, int duration) const {
+//    SDL_GameController *controller = SDL_GameControllerOpen(getGamepadId());
+//
+//    if (!controller) {
+//        // std::cerr << "No game controller found!" << std::endl;
+//        SDL_Quit();
+//        return;
+//    }
+//
+//    // Create a thread to run the rumble effect
+//    std::thread rumbleThreadObj(rumbleThread, controller, strength, duration);
+//
+//    // Detach the thread to allow it to run independently
+//    rumbleThreadObj.detach();
+//
+//    // Continue with other tasks or return immediately without blocking
+//}
 
 bool InputEntity::hasKinect() const { return kinect_mode; }
 int InputEntity::getDeviceNum() const { return gamepad_num; }

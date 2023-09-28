@@ -274,7 +274,7 @@ class InputEntity {
      * @param strength
      * @param duration
      */
-    void rumble(int strength, int duration) const;
+    //void rumble(int strength, int duration) const;
 
     /**
      * checks that the selected device is still available

@@ -604,7 +604,7 @@ void physics::checkPlayerIsHit(flecs::iter rock_it, Position *rock_positions,
                         (1 + rock_velocities[i].length() / VELOCITY_CAP);
                     std::cout << rock_dmg << std::endl;
                     auto input_entity = player_it.entity(0).get<InputEntity>();
-                    input_entity->rumble(std::min(rock_dmg * 4000, 65535), 300);
+                    //input_entity->rumble(std::min(rock_dmg * 4000, 65535), 300);
                     healths[0].hp -= rock_dmg;
                     rock_it.entity(i).destruct();
                     player_it.entity(0).set<IsHit>(
@@ -615,7 +615,7 @@ void physics::checkPlayerIsHit(flecs::iter rock_it, Position *rock_positions,
                         rock_it.world().get_mut<AppInfo>()->playerAlive = false;
                         auto input_entity =
                             player_it.entity(0).get<InputEntity>();
-                        input_entity->rumble(65535, 3000);
+                        //input_entity->rumble(65535, 3000);
                     }
                 }
             }
